@@ -34,7 +34,7 @@
       $('#show_about').click(function () {
         modal.addClass('is-active');
       });
-      $('.modal-close').click(function () {
+      $('#close_about').click(function () {
         modal.removeClass('is-active');
       });
     });
@@ -122,7 +122,7 @@
     <div class="modal-card">
       <header class="modal-card-head">
         <p class="modal-card-title">About Me</p>
-        <button class="delete" aria-label="close"></button>
+        <button class="delete" id="close_about" aria-label="close"></button>
       </header>
       <section class="modal-card-body">
         My name's Lucas, I'm a Computer Science undegrad.
@@ -131,9 +131,6 @@
         looking at than actually getting what I wanted.
         This project was born out of that frustration.
       </section>
-      <footer class="modal-card-foot">
-        <button class="modal-close is-large" aria-label="close" id="close_about"></button>
-      </footer>
     </div>
   </div>
 
