@@ -1,19 +1,46 @@
-<div class="modal">
-    <div class="modal-background"></div>
-    <div class="modal-card">
-      <header class="modal-card-head">
-        <p class="modal-card-title">Modal title</p>
-        <button class="delete" aria-label="close"></button>
-      </header>
-      <section class="modal-card-body">
-        My name's Lucas, I'm a Computer Science undegrad.
-        I got tired of looking at the MIPS Reference Card
-        and spending more time trying to understand what I was
-        looking at than actually getting what I wanted.
-        This project was born out of that frustration.
-      </section>
-      <footer class="modal-card-foot">
-        <button class="modal-close is-large" aria-label="close" id="close_about"></button>
-      </footer>
-    </div>
+<div class="modal" id="about_modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">About Me</p>
+      <button class="delete" id="close_about" aria-label="close" onclick="closeModal('about_modal')"></button>
+    </header>
+    <section class="modal-card-body">
+      My name's Lucas, I'm a Computer Science undegrad.
+      I got tired of looking at the MIPS Reference Card
+      and spending more time trying to understand what I was
+      looking at than actually getting what I wanted.
+      This project was born out of that frustration.
+    </section>
+    <footer class="modal-card-foot">
+      <!-- Each button in a column to assure proper spacing -->
+      <div class="columns">
+
+        <div class="column">
+          <a href="https://github.com/lzacchi" target="_blank">
+            <button class="button is-rounded">
+              <span class="icon">
+                <i class="fab fa-github"></i>
+              </span>
+              <span>GitHub</span>
+            </button>
+          </a>
+        </div>
+
+        <div class="column">
+          <a href="https://twitter.com/lzacch" target="_blank">
+            <button class="button is-info is-rounded">
+              <span class="icon">
+                <i class="fab fa-twitter"></i>
+              </span>
+              <span>@lzacch</span>
+            </button>
+          </a>
+        </div>
+      </div>
+
+    </footer>
+
   </div>
+
+</div>
