@@ -15,17 +15,20 @@
   <script>
     $(function () {
       $("#navbar").load("components/navbar.html");
-      $("#instruction_set").load("components/instruction_set.html");
-      $("#opcode_reference").load("components/opcode_reference.html");
-      $("#modal").load("components/about_modal.html");
+      $("#instruction-set").load("components/instruction_set.html");
+      $("#opcode-reference").load("components/opcode_reference.html");
+      $("#about-modal").load("components/about_modal.html");
+      $("#donate-modal").load("components/donate_modal.html");
       $("#registers").load("components/registers.html");
+      $("#instruction-formats").load("components/instruction_formats.html");
+
     });
 
   </script>
 </head>
 
 <body class="mx-4"
-  onload="hideElement('opcode_reference_block'); hideElement('registers_block')">
+  onload="hideElement('opcode-reference-block'); hideElement('registers-block'); hideElement('instruction-format-block')">
   <h1 class="title">
     MIPS Interactive Data Card
   </h1>
@@ -33,20 +36,26 @@
   <div id="navbar"></div>
 
 
-  <div class="block notification is-primary" id="instruction_set_block">
-    <div class="table-container" id="instruction_set"></div>
+  <div class="block notification is-primary" id="instruction-set-block">
+    <div class="table-container" id="instruction-set"></div>
   </div>
 
-  <div class="block notification is-link" id="opcode_reference_block">
-    <div class="table-container" id="opcode_reference"></div>
+  <div class="block notification is-link" id="opcode-reference-block">
+    <div class="table-container" id="opcode-reference"></div>
   </div>
 
-  <div class="block notification is-info" id="registers_block">
+  <div class="block notification is-info" id="registers-block">
     <div class=table-container id="registers"></div>
   </div>
 
+  <div class="block notification is-info" id="instruction-format-block">
+    <div class=table-container id="instruction-formats"></div>
+  </div>
 
-  <div class id="modal"></div>
+
+  <div class id="about-modal"></div>
+  <div class id="donate-modal"></div>
+
 
 </body>
 

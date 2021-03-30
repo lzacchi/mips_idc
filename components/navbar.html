@@ -1,58 +1,70 @@
 <nav class="navbar is-light" role="navigation" aria-label="main navigation">
-    <div class="navbar-brand">
-        <img src="img/cpu_icon.png" width="50" height="50">
+  <div class="navbar-brand">
+    <img src="img/cpu_icon.png" width="50" height="50">
+    </a>
+
+    <a role="button" id="navbar_burger" class="navbar-burger" aria-label="menu" aria-expanded="true"
+      data-target="mips_navbar" onclick="openBurger('mips_navbar', 'navbar_burger')">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+
+  <div id="mips_navbar" class="navbar-menu">
+    <div class="navbar-start">
+      <a class="navbar-item" href="#instruction_set"
+        onclick="showElement_('instruction-set-block'); hideElement('opcode-reference-block'); hideElement('registers-block')">
+        Instruction Set
       </a>
 
-      <a role="button" id="navbar_burger" class="navbar-burger" aria-label="menu" aria-expanded="true" data-target="mips_navbar" onclick="openBurger('mips_navbar', 'navbar_burger')">
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
-        <span aria-hidden="true"></span>
+      <a class="navbar-item" href="#opcode_ref"
+        onclick="showElement_('opcode-reference-block'); hideElement('instruction-set-block'); hideElement('registers-block')">
+        OPCode Reference
       </a>
-    </div>
 
-    <div id="mips_navbar" class="navbar-menu">
-      <div class="navbar-start">
-        <a class="navbar-item" href="#instruction_set" onclick="showElement_('instruction_set_block'); hideElement('opcode_reference_block'); hideElement('registers_block')">
-          Instruction Set
+      <a class="navbar-item" href="#instruction_converter">
+        Instruction Converter
+      </a>
+
+      <a class="navbar-item" href="#instruction_format"
+        onclick="showElement_('instruction-format-block'); hideElement('opcode-reference-block'); hideElement('instruction-set-block'); hideElement('registers-block')">
+        Instruction Formats
+      </a>
+      <a href="#registers" class="navbar-item"
+        onclick="showElement_('registers-block'); hideElement('opcode-reference-block'); hideElement('instruction-set-block'); hideElement('instruction-format-block')">
+        Registers
+      </a>
+
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More
         </a>
 
-        <a class="navbar-item" href="#opcode_ref" onclick="showElement_('opcode_reference_block'); hideElement('instruction_set_block'); hideElement('registers_block')">
-          OPCode Reference
-        </a>
+        <div class="navbar-dropdown">
 
-        <a class="navbar-item" href="#instruction_converter">
-          Instruction Converter
-        </a>
-
-        <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            More
+          <a class="navbar-item">
+            Memory Allocation
+          </a>
+          <a class="navbar-item">
+            Exception Codes
+          </a>
+          <hr class="navbar-divider">
+          <a class="navbar-item" onclick="openModal('about_modal')">
+            About
           </a>
 
-          <div class="navbar-dropdown">
-            <a class="navbar-item">
-              Instruction Formats
-            </a>
-            <a href="#registers" class="navbar-item" onclick="showElement_('registers_block'); hideElement('opcode_reference_block'); hideElement('instruction_set_block')">
-              Registers
-            </a>
-            <a class="navbar-item">
-              Memory Allocation
-            </a>
-            <a class="navbar-item">
-              Exception Codes
-            </a>
-            <hr class="navbar-divider">
-            <a class="navbar-item" onclick="openModal('about_modal')">
-              About
-            </a>
-          </div>
+          <a class="navbar-item" onclick="openModal('donate_modal')">
+            Donate
+          </a>
+
         </div>
       </div>
+    </div>
 
-      <!-- <div class="navbar-end">
+    <!-- <div class="navbar-end">
         <div class="navbar-item">
         </div>
       </div> -->
-    </div>
-  </nav>
+  </div>
+</nav>
