@@ -1,14 +1,126 @@
 <table class="table has-text-centered is-fullwidth">
   <thead>
-      <tr>
-          <th>Name</th>
-          <th>OpCode</th>
-          <th>Funct</th>
-          <th>Format</th>
-          <th>Operation</th>
-          <th>Instruction</th>
-      </tr>
+    <tr>
+      <th>Name</th>
+      <th>OpCode</th>
+      <th>Funct</th>
+      <th>Format</th>
+      <th>Operation</th>
+      <th>Instruction</th>
+    </tr>
   </thead>
   <tbody>
+    <tr>
+      <td>
+        <b>R Format</b>
+      </td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>Add</td>
+      <td>00 0000</td>
+      <td>10 0000</td>
+      <td>R</td>
+      <td>rd = rs + rt</td>
+      <td>00 0000 rs rt rd 10 0000</td>
+    </tr>
+
+    <tr>
+      <td>Add Unsigned</td>
+      <td>00 0001</td>
+      <td>10 0000</td>
+      <td>R</td>
+      <td>rd = rs + rt</td>
+      <td>00 0000 rs rt rd 10 0001</td>
+    </tr>
+
+    <tr>
+      <td>And</td>
+      <td>00 0000</td>
+      <td>10 0100</td>
+      <td>R</td>
+      <td>rd = rs and rt</td>
+      <td>00 0000 rs rt rd 10 0100</td>
+    </tr>
+
+    <tr>
+      <td>Or</td>
+      <td>00 0000</td>
+      <td>10 0101</td>
+      <td>R</td>
+      <td>rd = rs or rt</td>
+      <td>00 0000 rs rt rd 10 0101</td>
+    </tr>
+
+    <tr>
+      <td>Nor</td>
+      <td>00 0000</td>
+      <td>10 0111</td>
+      <td>R</td>
+      <td>rd = not (rs or rt)</td>
+      <td>00 0000 rs rt rd 10 0111</td>
+    </tr>
+
+    <tr>
+      <td>Set on Less Than</td>
+      <td>00 0000</td>
+      <td>10 1010</td>
+      <td>R</td>
+      <td>rd = 1 if rs < rt else 0</td>
+      <td>00 0000 rs rt rd 10 1010</td>
+    </tr>
+
+    <tr>
+      <td>Set on Less Than Unsigned</td>
+      <td>00 0000</td>
+      <td>10 1011</td>
+      <td>R</td>
+      <td>rd = 1 if rs < rt else 0</td>
+      <td>00 0000 rs rt rd 10 1011</td>
+    </tr>
+
+    <tr>
+      <td>Subtract</td>
+      <td>00 0000</td>
+      <td>10 0010</td>
+      <td>R</td>
+      <td>rd = rs - rt</td>
+      <td>00 0000 rs rt rd 10 0010</td>
+    </tr>
+
+    <tr>
+      <td>Subtract Unsigned</td>
+      <td>00 0000</td>
+      <td>10 0011</td>
+      <td>R</td>
+      <td>rd = rs - rt</td>
+      <td>00 0000 rs rt rd 10 0011</td>
+    </tr>
+
+    <tr>
+      <td>
+        <b>I Format</b>
+      </td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
+
+    <tr>
+      <td>
+        <b>J Format</b>
+      </td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+    </tr>
   </tbody>
 </table>

@@ -1,68 +1,345 @@
-<table class="table has-text-centered is-fullwidth">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Mnemonic</th>
-            <th>Format</th>
-            <th>Operation</th>
-            <th>Opcode</th>
-            <th>Funct</th>
-        </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th>Add</th>
-            <th>add</th>
-            <th>R</th>
-            <th>rd = rs + rt</th>
-            <th>00 0000</th>
-            <th>20</th>
-        </tr>
+<input class="input is-primary" id="instruction-search" type="text" onkeyup="filterInstruction()"
+  placeholder="Search Instruction">
 
-        <tr>
-            <th>Add Immediate</th>
-            <th>addi</th>
-            <th>I</th>
-            <th>rt = rs + Signal Extended Immediate</th>
-            <th>00 0000</th>
-            <th>8</th>
-        </tr>
+<table class="table has-text-centered is-fullwidth" id="core-instruction-table" data-name="instruction-table">
+  <b>Core Instruction Set</b>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Mnemonic</th>
+      <th>Format</th>
+      <th>Operation</th>
+      <th>Opcode</th>
+      <th>Funct</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Add</td>
+      <td>add</td>
+      <td>R</td>
+      <td>rd = rs + rt</td>
+      <td>00 0000</td>
+      <td>10 0000</td>
+    </tr>
 
-        <tr>
-            <th>Add Imm. Unsigned</th>
-            <th>addiu</th>
-            <th>I</th>
-            <th>rt = rs + Signal Extended Immediate</th>
-            <th>8</th>
-            <th>--</th>
-        </tr>
+    <tr>
+      <td>Add Immediate</td>
+      <td>addi</td>
+      <td>I</td>
+      <td>rt = rs + Signal Extended Immediate</td>
+      <td>00 0000</td>
+      <td>00 1000</td>
+    </tr>
 
-        <tr>
-            <th>Add Unsigned</th>
-            <th>addu</th>
-            <th>R</th>
-            <th>rd = rs + rt</th>
-            <th>9</th>
-            <th>--</th>
-        </tr>
+    <tr>
+      <td>Add Imm. Unsigned</td>
+      <td>addiu</td>
+      <td>I</td>
+      <td>rt = rs + Signal Extended Immediate</td>
+      <td>00 1000</td>
+      <td>--</td>
+    </tr>
 
-        <tr>
-            <th>And</th>
-            <th>and</th>
-            <th>R</th>
-            <th>rd = rs & rt</th>
-            <th>00 0000</th>
-            <th>24</th>
-        </tr>
+    <tr>
+      <td>Add Unsigned</td>
+      <td>addu</td>
+      <td>R</td>
+      <td>rd = rs + rt</td>
+      <td>00 1001</td>
+      <td>--</td>
+    </tr>
 
-        <tr>
-            <th>And Immediate</th>
-            <th>andi</th>
-            <th>I</th>
-            <th>rt = rs & ZeroExtImm</th>
-            <th>C</th>
-            <th>--</th>
-        </tr>
+    <tr>
+      <td>And</td>
+      <td>and</td>
+      <td>R</td>
+      <td>rd = rs & rt</td>
+      <td>00 0000</td>
+      <td>10 0100</td>
+    </tr>
 
-    </tbody>
+    <tr>
+      <td>And Immediate</td>
+      <td>andi</td>
+      <td>I</td>
+      <td>rt = rs & ZeroExtImm</td>
+      <td>00 1100</td>
+      <td>--</td>
+    </tr>
+
+    <tr>
+      <td>Branch on Equal</td>
+      <td>beq</td>
+      <td>I</td>
+      <td>if (rs == rt) PC = PC + 4 + Branch Address</td>
+      <td>00 0100</td>
+      <td>--</td>
+    </tr>
+
+    <tr>
+      <td>Branch on Not Equal</td>
+      <td>bne</td>
+      <td>I</td>
+      <td>if (rs != rt) PC = PC + 4 + Branch Address</td>
+      <td>00 0101</td>
+      <td>--</td>
+    </tr>
+
+    <tr>
+      <td>Jump</td>
+      <td>j</td>
+      <td>J</td>
+      <td>PC = Jump Address</td>
+      <td>00 0010</td>
+      <td>--</td>
+    </tr>
+
+    <tr>
+      <td>Jump and Link</td>
+      <td>jal</td>
+      <td>J</td>
+      <td>$31 = PC + 8; PC = Jump Address</td>
+      <td>00 0011</td>
+      <td>--</td>
+    </tr>
+
+    <tr>
+      <td>Jump Register</td>
+      <td>jr</td>
+      <td>R</td>
+      <td>PC = rs</td>
+      <td>00 0000</td>
+      <td>00 1000</td>
+    </tr>
+
+    <tr>
+      <td>Load Byte Unsigned</td>
+      <td>lbu</td>
+      <td>I</td>
+      <td>rt = 0x000000 + Mem[SignExtImm( rs(7:0) )] </td>
+      <td>10 0100</td>
+      <td>--</td>
+    </tr>
+
+    <tr>
+      <td>Load Halfword Unsigned</td>
+      <td>lhu</td>
+      <td>I</td>
+      <td>rt = 0x0000 + Mem[SignExtImm( rs(16:0) )] </td>
+      <td>10 0101</td>
+      <td>--</td>
+    </tr>
+
+    <tr>
+      <td>Load Linked</td>
+      <td>ll</td>
+      <td>I</td>
+      <td>rt = Mem[rs + SignExtImm] </td>
+      <td>11 0000</td>
+      <td>--</td>
+    </tr>
+
+    <tr>
+      <td>Load Upper Immediate</td>
+      <td>lui</td>
+      <td>I</td>
+      <td>rt = Immediate + 0x0000 </td>
+      <td>00 1111</td>
+      <td>--</td>
+    </tr>
+
+    <tr>
+      <td>Load Word</td>
+      <td>lw</td>
+      <td>I</td>
+      <td>rt = Mem[rs + SignExtImm] </td>
+      <td>10 0011</td>
+      <td>--</td>
+    </tr>
+
+    <tr>
+      <td>Nor</td>
+      <td>nor</td>
+      <td>R</td>
+      <td>rd = not(rs || rt) </td>
+      <td>00 0000</td>
+      <td>10 0111</td>
+    </tr>
+
+    <tr>
+      <td>Or</td>
+      <td>or</td>
+      <td>R</td>
+      <td>rd = rs || rt </td>
+      <td>00 0000</td>
+      <td>10 0101</td>
+    </tr>
+
+    <tr>
+      <td>Or Immediate</td>
+      <td>ori</td>
+      <td>I</td>
+      <td>rt = rs || ZeroExtImm </td>
+      <td>00 1101</td>
+      <td>--</td>
+    </tr>
+
+    <tr>
+      <td>Set Less tdan</td>
+      <td>slt</td>
+      <td>R</td>
+      <td>rd = 1 if (rs < rt) else 0 </td>
+      <td>00 0000</td>
+      <td>10 1010</td>
+    </tr>
+
+    <tr>
+      <td>Set Less tdan Imm</td>
+      <td>slti</td>
+      <td>I</td>
+      <td>rt = 1 if (rs < SignExtImm) else 0 </td>
+      <td>00 1010</td>
+      <td>--</td>
+    </tr>
+
+    <tr>
+      <td>Set Less tdan Imm Unsigned</td>
+      <td>sltiu</td>
+      <td>I</td>
+      <td>rt = 1 if (rs < SignExtImm) else 0 </td>
+      <td>00 1011</td>
+      <td>--</td>
+    </tr>
+
+    <tr>
+      <td>Set Less tdan Unsigned</td>
+      <td>sltu</td>
+      <td>R</td>
+      <td>rd = 1 if (rs < rt) else 0 </td>
+      <td>00 0000</td>
+      <td>10 1011</td>
+    </tr>
+
+    <tr>
+      <td>Shift Left Logical</td>
+      <td>sll</td>
+      <td>R</td>
+      <td>rd = rt << shamt </td>
+      <td>00 0000</td>
+      <td>00 0000</td>
+    </tr>
+
+    <tr>
+      <td>Shift Right Logical</td>
+      <td>srl</td>
+      <td>R</td>
+      <td>rd = rt >> shamt </td>
+      <td>0</td>
+      <td>00 0010</td>
+    </tr>
+
+    <tr>
+      <td>Store Byte</td>
+      <td>sb</td>
+      <td>I</td>
+      <td>Mem[rs + SignExtImm(7:0)] = rt(7:0)</td>
+      <td>10 1000</td>
+      <td>--</td>
+    </tr>
+
+    <tr>
+      <td>Store Store Conditional</td>
+      <td>sc</td>
+      <td>I</td>
+      <td>Mem[rs + SignExtImm] = rt; rt = 1 if atomic else 0</td>
+      <td>11 1000</td>
+      <td>--</td>
+    </tr>
+
+    <tr>
+      <td>Store Halfword</td>
+      <td>sh</td>
+      <td>I</td>
+      <td>Mem[rs + SignExtImm(15:0)] = rt(15:0)</td>
+      <td>10 1001</td>
+      <td>--</td>
+    </tr>
+
+    <tr>
+      <td>Store Word</td>
+      <td>sw</td>
+      <td>I</td>
+      <td>Mem[rs + SignExtImm] = rt</td>
+      <td>10 1011</td>
+      <td>--</td>
+    </tr>
+
+    <tr>
+      <td>Subtract</td>
+      <td>sub</td>
+      <td>R</td>
+      <td>rd = rs - rt</td>
+      <td>00 0000</td>
+      <td>10 0010</td>
+    </tr>
+
+    <tr>
+      <td>Subtract Unsigned</td>
+      <td>subu</td>
+      <td>R</td>
+      <td>rd = rs - rt</td>
+      <td>00 0000</td>
+      <td>10 0011</td>
+    </tr>
+
+  </tbody>
+</table>
+
+<table class="table has-text-centered is-fullwidth" id="arith-instruction-table" data-name="instruction-table">
+  <b>Arithmetic Instruction Set</b>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Mnemonic</th>
+      <th>Format</th>
+      <th>Operation</th>
+      <th>Opcode</th>
+      <th>Fmt</th>
+      <th>Ft</th>
+      <th>Funct</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Move From High</td>
+      <td>mfhi</td>
+      <td>R</td>
+      <td>rd = rs + rt</td>
+      <td>00 0000</td>
+      <th>--</th>
+      <th>--</th>
+      <td>01 0000</td>
+    </tr>
+  </tbody>
+
+</table>
+
+<table class="table has-text-centered is-fullwidth" id="pseudo-instruction-table" data-name="instruction-table">
+  <b>Pseudo Instruction Set</b>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Mnemonic</th>
+      <th>Operation</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Move</td>
+      <td>move</td>
+      <td>rd = rs</td>
+    </tr>
+  </tbody>
+
 </table>
