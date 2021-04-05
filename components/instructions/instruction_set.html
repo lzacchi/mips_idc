@@ -1,7 +1,7 @@
-<input class="input is-primary" id="instruction-search" type="text" onkeyup="filterInstruction()"
+<input class="input is-primary" id="instruction-search" type="text" onkeyup="filterInstruction('instruction-search')"
   placeholder="Search Instruction">
 
-<table class="table has-text-centered is-fullwidth" id="core-instruction-table" data-name="instruction-table">
+<table class="table has-text-centered is-fullwidth" id="core-instruction-table" data-name="filterable">
   <b>Core Instruction Set</b>
   <thead>
     <tr>
@@ -46,8 +46,8 @@
       <td>addu</td>
       <td>R</td>
       <td>rd = rs + rt</td>
-      <td>00 1001</td>
-      <td>--</td>
+      <td>00 0000</td>
+      <td>10 0001</td>
     </tr>
 
     <tr>
@@ -359,7 +359,7 @@
   </tbody>
 </table>
 
-<table class="table has-text-centered is-fullwidth" id="arith-instruction-table" data-name="instruction-table">
+<table class="table has-text-centered is-fullwidth" id="arith-instruction-table" data-name="filterable">
   <b>Arithmetic Instruction Set</b>
   <thead>
     <tr>
@@ -374,21 +374,12 @@
     </tr>
   </thead>
   <tbody>
-    <tr>
-      <td>Move From High</td>
-      <td>mfhi</td>
-      <td>R</td>
-      <td>rd = rs + rt</td>
-      <td>00 0000</td>
-      <th>--</th>
-      <th>--</th>
-      <td>01 0000</td>
-    </tr>
+
   </tbody>
 
 </table>
 
-<table class="table has-text-centered is-fullwidth" id="pseudo-instruction-table" data-name="instruction-table">
+<table class="table has-text-centered is-fullwidth" id="pseudo-instruction-table" data-name="filterable">
   <b>Pseudo Instruction Set</b>
   <thead>
     <tr>

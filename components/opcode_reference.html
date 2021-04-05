@@ -1,4 +1,8 @@
-<table class="table has-text-centered is-fullwidth">
+<input class="input is-primary" id="opcode-search" type="text" onkeyup="filterInstruction('opcode-search')"
+  placeholder="Search OpCode">
+
+<table class="table has-text-centered is-fullwidth" id="R-opcode-table" data-name="filterable">
+  <b>R Format</b>
   <thead>
     <tr>
       <th>Name</th>
@@ -11,16 +15,6 @@
   </thead>
   <tbody>
     <tr>
-      <td>
-        <b>R Format</b>
-      </td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
       <td>Add</td>
       <td>00 0000</td>
       <td>10 0000</td>
@@ -31,8 +25,8 @@
 
     <tr>
       <td>Add Unsigned</td>
-      <td>00 0001</td>
-      <td>10 0000</td>
+      <td>00 0000</td>
+      <td>10 0001</td>
       <td>R</td>
       <td>rd = rs + rt</td>
       <td>00 0000 rs rt rd 10 0001</td>
@@ -100,27 +94,39 @@
       <td>rd = rs - rt</td>
       <td>00 0000 rs rt rd 10 0011</td>
     </tr>
+  </tbody>
+</table>
 
+<table class="table has-text-centered is-fullwidth" id="I-opcode-table" data-name="filterable">
+  <b>I Format</b>
+  <thead>
     <tr>
-      <td>
-        <b>I Format</b>
-      </td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <th>Name</th>
+      <th>OpCode</th>
+      <th>Funct</th>
+      <th>Format</th>
+      <th>Operation</th>
+      <th>Instruction</th>
     </tr>
+  </thead>
+  <tbody>
 
+  </tbody>
+</table>
+
+<table class="table has-text-centered is-fullwidth" id="J-opcode-table" data-name="filterable">
+  <b>J Format</b>
+  <thead>
     <tr>
-      <td>
-        <b>J Format</b>
-      </td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
+      <th>Name</th>
+      <th>OpCode</th>
+      <th>Funct</th>
+      <th>Format</th>
+      <th>Operation</th>
+      <th>Instruction</th>
     </tr>
+  </thead>
+  <tbody>
+
   </tbody>
 </table>

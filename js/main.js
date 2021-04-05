@@ -8,13 +8,13 @@ function hideElement(id) {
   element.style.display = 'none';
 }
 
-function filterInstruction() {
+function filterInstruction(id) {
   var td, i, tdArr, j, alltables;
-  var input = document.getElementById("instruction-search");
+  var input = document.getElementById(id);
   var filter = input.value.toUpperCase();
   // var table = document.getElementById("instruction-table");
 
-  alltables = document.querySelectorAll("table[data-name=instruction-table]");
+  alltables = document.querySelectorAll("table[data-name=filterable]");
 
   alltables.forEach(function (table) {
     // Loop through all table rows
