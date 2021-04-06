@@ -35,7 +35,7 @@ const registerMap = {
 
 const functMap = {
   '100000': 'add',
-  '10 0001': 'addu',
+  '100001': 'addu',
   '100100': 'and',
   '001000': 'jr',
   '100111': 'nor',
@@ -101,6 +101,18 @@ function hexToAssembly(input) {
     instruction = translateTypeR(input);
   }
 
+  if (opcode in memoryMap) {
+    instruction = translateMemory(input);
+  }
+
+  if (opcode in aluMap) {
+    instruction = translateAlu(input);
+  }
+
+  if (opcode in branchMap) {
+    instruction = translateBranch(input);
+  }
+
   if (instruction === undefined) {
     instruction = "Not a valid instruction";
   }
@@ -124,7 +136,28 @@ function binToAssembly(input) {
     instruction = translateTypeR(input);
   }
 
+  if (opcode === '000000') {
+    instruction = translateTypeR(input);
+  }
+
+  if (opcode in memoryMap) {
+    instruction = translateMemory(input);
+  }
+
+  if (opcode in aluMap) {
+    instruction = translateAlu(input);
+  }
+
+  if (opcode in branchMap) {
+    instruction = translateBranch(input);
+  }
+
+  if (instruction === undefined) {
+    instruction = "Not a valid instruction";
+  }
+
   document.getElementById('bin').innerHTML = instruction;
+
 }
 
 function translateTypeR(instr) {
@@ -137,11 +170,12 @@ function translateTypeR(instr) {
 
   var mnemonic = functMap[funct];
 
-  // console.log(rs);
-  // console.log(rt);
-  // console.log(rd);
-
   var instruction = mnemonic + ' ' + registerMap[rd] + ', ' + registerMap[rs] + ', ' + registerMap[rt];
+
+  if (mnemonic === 'jr') {
+    instruction = mnemonic + ' ' + registerMap[rs];
+  }
+
   console.log(instruction);
   return instruction;
 
@@ -158,10 +192,29 @@ function translateBranch(input) {
 }
 
 function translateMemory(input) {
-  var instruction;
+  var opcode = input.slice(0,6);
+  var rs = input.slice(6,11);
+  var rt = input.slice(11,16);
+  var offset = binaryToHex(input.slice(16)).result;
+
+  var mnemonic = memoryMap[opcode];
+
+  var instruction = mnemonic + ' ' + registerMap[rt] + ' 0x' + offset + '(' + registerMap[rs] + ')';
+
   return instruction;
 }
 
+
+// const memoryMap = {
+//   '100000': 'lb',
+//   '100100': 'lbu',
+//   '100001': 'lh',
+//   '100101': 'lhu',
+//   '100011': 'lw',
+//   '101000': 'sb',
+//   '101001': 'sh',
+//   '101011': 'sw'
+// }
 
 function assemblyToMachine() {
   var instruction = "Coming soon!";

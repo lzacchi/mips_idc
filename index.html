@@ -12,11 +12,12 @@
   <script src="js/modal.js"></script>
   <script src="js/navbar.js"></script>
   <script src="js/instructionConverter.js"></script>
+  <script src="js/binaryToHex.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
   <script>
     $(function () {
-      $("#navbar").load("components/view/navbar.html");
+      $("#navbar").load("components/navbar.html");
 
       $("#instruction-set").load("components/instructions/instruction_set.html");
       $("#instruction-formats").load("components/instructions/instruction_formats.html");
@@ -27,14 +28,14 @@
       $("#about-modal").load("components/modal/about_modal.html");
       $("#donate-modal").load("components/modal/donate_modal.html");
 
-      $("#calculator-block").load("components/instruction_converter.html");
+      $("#converter-block").load("components/instruction_converter.html");
     });
 
   </script>
 </head>
 
 <body class="mx-4"
-  onload="hideElement('opcode-reference-block'); hideElement('registers-block'); hideElement('instruction-format-block'); hideElement('instruction-format-block'); hideElement('calculator-block');">
+  onload="hideElement('opcode-reference-block'); hideElement('registers-block'); hideElement('instruction-format-block'); hideElement('instruction-format-block'); hideElement('converter-block');">
   <h1 class="title">
     iMIPS: MIPS Interactive Data Card
   </h1>
@@ -58,7 +59,7 @@
     <div class=table-container id="instruction-formats"></div>
   </div>
 
-  <div id="calculator-block"></div>
+  <div id="converter-block"></div>
 
 
   <div id="about-modal"></div>
