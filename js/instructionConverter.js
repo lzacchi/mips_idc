@@ -124,17 +124,7 @@ function hexToAssembly(input) {
 function binToAssembly(input) {
 
   var instruction;
-
-  console.log("INPUT:")
-  console.log(input);
-
   var opcode = input.slice(0, 6);
-  console.log("OPCODE")
-  console.log(opcode)
-
-  if (opcode === '000000') {
-    instruction = translateTypeR(input);
-  }
 
   if (opcode === '000000') {
     instruction = translateTypeR(input);
@@ -161,14 +151,16 @@ function binToAssembly(input) {
 }
 
 function translateTypeR(instr) {
-  var opcode = instr.slice(0, 6);
   var rs = instr.slice(6, 11);
   var rt = instr.slice(11, 16);
   var rd = instr.slice(16, 21);
   var shamt = instr.slice(21, 26);
   var funct = instr.slice(26);
+  var shift = ['sll', 'srl'];
 
   var mnemonic = functMap[funct];
+
+
 
   var instruction = mnemonic + ' ' + registerMap[rd] + ', ' + registerMap[rs] + ', ' + registerMap[rt];
 
@@ -176,7 +168,10 @@ function translateTypeR(instr) {
     instruction = mnemonic + ' ' + registerMap[rs];
   }
 
-  console.log(instruction);
+  if (shift.includes(mnemonic)) {
+    var instruction = mnemonic + ' ' + registerMap[rd] + ', ' + registerMap[rt] + ', ' + parseInt(shamt, 2);
+  }
+
   return instruction;
 
 }

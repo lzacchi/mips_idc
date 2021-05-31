@@ -87,6 +87,24 @@
     </tr>
 
     <tr>
+      <td>Divide</td>
+      <td>div</td>
+      <td>R</td>
+      <td>Lo = rs/rt; Hi = rs %rt</td>
+      <td>00 0000</td>
+      <td>01 1010</td>
+    </tr>
+
+    <tr>
+      <td>Divide Unsigned</td>
+      <td>divu</td>
+      <td>R</td>
+      <td>Lo = rs/rt; Hi = rs %rt</td>
+      <td>00 0000</td>
+      <td>01 1011</td>
+    </tr>
+
+    <tr>
       <td>Jump</td>
       <td>j</td>
       <td>J</td>
@@ -156,6 +174,42 @@
       <td>rt = Mem[rs + SignExtImm] </td>
       <td>10 0011</td>
       <td>--</td>
+    </tr>
+
+    <tr>
+      <td>Move from High</td>
+      <td>mfhi</td>
+      <td>R</td>
+      <td>rd = Hi</td>
+      <td>00 0000</td>
+      <td>01 0000</td>
+    </tr>
+
+    <tr>
+      <td>Move from Low</td>
+      <td>mflo</td>
+      <td>R</td>
+      <td>rd = Lo</td>
+      <td>00 0000</td>
+      <td>01 0010</td>
+    </tr>
+
+    <tr>
+      <td>Multiply</td>
+      <td>mult</td>
+      <td>R</td>
+      <td>{Hi, Lo} = rs * rt</td>
+      <td>00 0000</td>
+      <td>01 1000</td>
+    </tr>
+
+    <tr>
+      <td>Multiply Unsigned</td>
+      <td>multu</td>
+      <td>R</td>
+      <td>{Hi, Lo} = rs * rt</td>
+      <td>00 0000</td>
+      <td>01 1001</td>
     </tr>
 
     <tr>
@@ -300,60 +354,6 @@
       <td>rd = rs - rt</td>
       <td>00 0000</td>
       <td>10 0011</td>
-    </tr>
-
-    <tr>
-      <td>Move from High</td>
-      <td>mfhi</td>
-      <td>R</td>
-      <td>rd = Hi</td>
-      <td>00 0000</td>
-      <td>01 0000</td>
-    </tr>
-
-    <tr>
-      <td>Move from Low</td>
-      <td>mflo</td>
-      <td>R</td>
-      <td>rd = Lo</td>
-      <td>00 0000</td>
-      <td>01 0010</td>
-    </tr>
-
-    <tr>
-      <td>Divide</td>
-      <td>div</td>
-      <td>R</td>
-      <td>Lo = rs/rt; Hi = rs %rt</td>
-      <td>00 0000</td>
-      <td>01 1010</td>
-    </tr>
-
-    <tr>
-      <td>Divide Unsigned</td>
-      <td>divu</td>
-      <td>R</td>
-      <td>Lo = rs/rt; Hi = rs %rt</td>
-      <td>00 0000</td>
-      <td>01 1011</td>
-    </tr>
-
-    <tr>
-      <td>Multiply</td>
-      <td>mult</td>
-      <td>R</td>
-      <td>{Hi, Lo} = rs * rt</td>
-      <td>00 0000</td>
-      <td>01 1000</td>
-    </tr>
-
-    <tr>
-      <td>Multiply Unsigned</td>
-      <td>multu</td>
-      <td>R</td>
-      <td>{Hi, Lo} = rs * rt</td>
-      <td>00 0000</td>
-      <td>01 1001</td>
     </tr>
 
   </tbody>
