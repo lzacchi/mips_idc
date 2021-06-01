@@ -94,6 +94,7 @@
       <td>rd = rs - rt</td>
       <td>00 0000 rs rt rd 10 0011</td>
     </tr>
+
   </tbody>
 </table>
 
@@ -127,6 +128,23 @@
     </tr>
   </thead>
   <tbody>
+    <tr>
+      <td>Jump</td>
+      <td>00 0010</td>
+      <td>--</td>
+      <td>J</td>
+      <td>PC = Jump Address &lt&lt 2 </td>
+      <td>00 0010 Jump Address</td>
+    </tr>
+
+    <tr>
+      <td>Jump and Link</td>
+      <td>00 0011</td>
+      <td> -- </td>
+      <td>J</td>
+      <td>$31 = PC + 8; PC = Jump Address &lt&lt 2</td>
+      <td>00 0011 Jump Address</td>
+    </tr>
 
   </tbody>
 </table>

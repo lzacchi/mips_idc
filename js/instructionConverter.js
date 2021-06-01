@@ -176,11 +176,13 @@ function translateTypeR(instr) {
 
 }
 
+// TODO
 function translateAlu(input) {
   var instruction;
   return instruction;
 }
 
+// TODO
 function translateBranch(input) {
   var instruction;
   return instruction;
@@ -199,17 +201,6 @@ function translateMemory(input) {
   return instruction;
 }
 
-
-// const memoryMap = {
-//   '100000': 'lb',
-//   '100100': 'lbu',
-//   '100001': 'lh',
-//   '100101': 'lhu',
-//   '100011': 'lw',
-//   '101000': 'sb',
-//   '101001': 'sh',
-//   '101011': 'sw'
-// }
 
 function assemblyToMachine() {
   var instruction = "Coming soon!";

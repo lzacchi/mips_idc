@@ -1,7 +1,6 @@
-<nav class="navbar is-light" role="navigation" aria-label="main navigation">
+<nav class="navbar is-transparent" role="navigation" aria-label="main navigation">
   <div class="navbar-brand">
     <img src="img/cpu_icon.png" width="50" height="50">
-    </a>
 
     <a role="button" id="navbar_burger" class="navbar-burger" aria-label="menu" aria-expanded="true"
       data-target="mips_navbar" onclick="openBurger('mips_navbar', 'navbar_burger')">
@@ -37,7 +36,18 @@
         Registers
       </a>
 
-      <div class="navbar-item has-dropdown is-hoverable">
+      <a class="navbar-item">
+        Memory Allocation
+      </a>
+      <a class="navbar-item">
+        Exception Codes
+      </a>
+      <hr class="navbar-divider">
+      <a class="navbar-item" onclick="openModal('about_modal')">
+        About
+      </a>
+
+      <!-- <div class="navbar-item has-dropdown is-hoverable">
         <a class="navbar-link">
           More
         </a>
@@ -60,7 +70,7 @@
           </a>
 
         </div>
-      </div>
+      </div> -->
     </div>
 
     <!-- <div class="navbar-end">
