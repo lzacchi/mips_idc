@@ -1,53 +1,61 @@
 <div class="columns">
   <div class="column">
     <div class="block notification is-link">
-      <strong>Hex to assembly</strong>
-      <div class="field is-grouped">
-        <div class="control">
-          <input class="input" minlength="10" maxlength="10" type="text" id="hex-input" placeholder="0x00000000">
+      <div class="content">
+        <h1 class="title is-size-5">Hex to Assembly</h1>
+        <div class="field is-grouped">
+          <div class="control">
+            <input class="input" minlength="10" maxlength="10" type="text" id="hex-input" placeholder="0x00000000">
+          </div>
+          <div class="control">
+            <a class="button is-info" onclick="hexToAssembly(document.getElementById('hex-input').value)">
+              Convert
+            </a>
+          </div>
         </div>
-        <div class="control">
-          <a class="button is-info" onclick="hexToAssembly(document.getElementById('hex-input').value)">
-            Convert
-          </a>
-        </div>
+        <div id='hex'></div>
       </div>
-      <div id='hex'></div>
     </div>
   </div>
 
   <div class="column">
     <div class="block notification is-link">
-      <strong>Binary to assembly</strong\>
-        <div class="field is-grouped">
-          <div class="control">
-            <input class="input" minlength="32" maxlength="32" id="bin-input" type="text" placeholder="0000000000000000000000000000000000">
+      <div class="content">
+
+        <h1 class="title is-size-5">Binary to Assembly</h1>
+          <div class="field is-grouped">
+            <div class="control">
+              <input class="input" minlength="32" maxlength="32" id="bin-input" type="text" placeholder="0000000000000000000000000000000000">
+            </div>
+            <div class="control">
+              <a class="button is-info" onclick="binToAssembly(document.getElementById('bin-input').value)">
+                Convert
+              </a>
+            </div>
           </div>
-          <div class="control">
-            <a class="button is-info" onclick="binToAssembly(document.getElementById('bin-input').value)">
-              Convert
-            </a>
-          </div>
-        </div>
-        <div id="bin"></div>
+          <div id="bin"></div>
+      </div>
     </div>
   </div>
 
-  <div class="column">
+  <div class="column is-one-third">
     <div class="block notification is-link">
-      <strong>Assembly to Binary/Hex</strong\>
-        <div class="field is-grouped">
-          <div class="control">
-            <input class="input" id="assembly-input" type="text" placeholder="$add $t0, $t0, $zero">
+      <div class="content">
+
+        <h1 class="title is-size-5">Assembly to Machine Code</h1>
+          <div class="field is-grouped">
+            <div class="control">
+              <input class="input" id="assembly-input" type="text" placeholder="$add $t0, $t0, $zero">
+            </div>
+            <div class="control">
+              <a class="button is-info" onclick="assemblyToMachine()">
+                Convert
+              </a>
+            </div>
           </div>
-          <div class="control">
-            <a class="button is-info" onclick="assemblyToMachine()">
-              Convert
-            </a>
-          </div>
-        </div>
-        <div id="assembly"></div>
-    </div>
+          <div id="assembly"></div>
+      </div>
+      </div>
   </div>
 
 </div>
