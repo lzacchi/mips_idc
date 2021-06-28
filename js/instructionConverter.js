@@ -202,7 +202,7 @@ function translateMemory(input) {
 }
 
 
-function assemblyToMachine() {
-  var instruction = "Coming soon!";
-  document.getElementById('assembly').innerHTML = instruction;
-}
+// function assemblyToMachine() {
+//   var instruction = "Coming soon!";
+//   document.getElementById('assembly').innerHTML = instruction;
+// }
