@@ -13,69 +13,47 @@
   <div id="mips_navbar" class="navbar-menu">
     <div class="navbar-start">
       <a class="navbar-item" href="#instruction_set"
-        onclick="showElement_('instruction-set-block'); hideElement('opcode-reference-block'); hideElement('registers-block'); hideElement('instruction-format-block'); hideElement('converter-block')">
+        onclick="showElement_('instruction-set-block'); hideElement('opcode-reference-block'); hideElement('registers-block'); hideElement('instruction-format-block'); hideElement('converter-block');  hideElement('range-calculator-block');">
         Instruction Set
       </a>
 
       <a class="navbar-item" href="#opcode_ref"
-        onclick="showElement_('opcode-reference-block'); hideElement('instruction-set-block'); hideElement('registers-block'); hideElement('instruction-format-block'); hideElement('converter-block')">
+        onclick="showElement_('opcode-reference-block'); hideElement('instruction-set-block'); hideElement('registers-block'); hideElement('instruction-format-block'); hideElement('converter-block');  hideElement('range-calculator-block');">
         OPCode Reference
       </a>
 
       <a class="navbar-item" href="#instruction_converter"
-        onclick="showElement_('converter-block'); hideElement('instruction-set-block'); hideElement('opcode-reference-block'); hideElement('registers-block'); hideElement('instruction-format-block')">
+        onclick="showElement_('converter-block'); hideElement('instruction-set-block'); hideElement('opcode-reference-block'); hideElement('registers-block'); hideElement('instruction-format-block');  hideElement('range-calculator-block);">
         Instruction Converter
       </a>
 
       <a class="navbar-item" href="#instruction_format"
-        onclick="showElement_('instruction-format-block'); hideElement('opcode-reference-block'); hideElement('instruction-set-block'); hideElement('registers-block'); hideElement('converter-block')">
+        onclick="showElement_('instruction-format-block'); hideElement('opcode-reference-block'); hideElement('instruction-set-block'); hideElement('registers-block'); hideElement('converter-block');  hideElement('range-calculator-block');">
         Instruction Formats
       </a>
+
+      <a class="navbar-item" href="#range_calculator"
+        onclick="showElement_('range-calculator-block'); hideElement('instruction-format-block'); hideElement('opcode-reference-block'); hideElement('instruction-set-block'); hideElement('registers-block');">
+        Range Calculator
+      </a>
+
       <a href="#registers" class="navbar-item"
-        onclick="showElement_('registers-block'); hideElement('opcode-reference-block'); hideElement('instruction-set-block'); hideElement('instruction-format-block'); hideElement('converter-block')">
+        onclick="showElement_('registers-block'); hideElement('opcode-reference-block'); hideElement('instruction-set-block'); hideElement('instruction-format-block'); hideElement('converter-block'); hideElement('range-calculator-block');">
         Registers
       </a>
 
       <a class="navbar-item">
         Memory Allocation
       </a>
+
       <a class="navbar-item">
         Exception Codes
       </a>
+
       <hr class="navbar-divider">
       <a class="navbar-item" onclick="openModal('about_modal')">
         About
       </a>
-
-      <!-- <div class="navbar-item has-dropdown is-hoverable">
-        <a class="navbar-link">
-          More
-        </a>
-
-        <div class="navbar-dropdown">
-
-          <a class="navbar-item">
-            Memory Allocation
-          </a>
-          <a class="navbar-item">
-            Exception Codes
-          </a>
-          <hr class="navbar-divider">
-          <a class="navbar-item" onclick="openModal('about_modal')">
-            About
-          </a>
-
-          <a class="navbar-item" onclick="openModal('donate_modal')">
-            Donate
-          </a>
-
-        </div>
-      </div> -->
     </div>
-
-    <!-- <div class="navbar-end">
-        <div class="navbar-item">
-        </div>
-      </div> -->
   </div>
 </nav>

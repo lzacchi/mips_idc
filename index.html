@@ -12,6 +12,7 @@
   <script src="js/modal.js"></script>
   <script src="js/navbar.js"></script>
   <script src="js/instructionConverter.js"></script>
+  <script src="js/rangeCalculator.js"></script>
   <script src="js/binaryToHex.js"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
@@ -25,6 +26,8 @@
       $("#opcode-reference").load("components/opcode_reference.html");
       $("#registers").load("components/registers.html");
 
+      $("#range-calculator-block").load("components/range_calculator.html");
+
       $("#about-modal").load("components/modal/about_modal.html");
 
       $("#converter-block").load("components/instruction_converter.html");
@@ -34,7 +37,7 @@
 </head>
 
 <body class="mx-4"
-  onload="hideElement('opcode-reference-block'); hideElement('registers-block'); hideElement('instruction-format-block'); hideElement('instruction-format-block'); hideElement('converter-block');">
+  onload="hideElement('opcode-reference-block'); hideElement('registers-block'); hideElement('instruction-format-block'); hideElement('instruction-format-block'); hideElement('converter-block'); hideElement('range-calculator-block')">
   <h1 class="title">
     iMIPS: MIPS32 Interactive Data Card
   </h1>
@@ -60,6 +63,7 @@
 
   <div id="converter-block"></div>
 
+  <div id="range-calculator-block"></div>
 
   <div id="about-modal"></div>
   <div id="donate-modal"></div>
