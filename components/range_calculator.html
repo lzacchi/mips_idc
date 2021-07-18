@@ -22,10 +22,19 @@
     <div class="column">
       <div class="block notification is-link">
         <div class="content">
-
           <h1 class="title is-size-5">Jump Instruction Range</h1>
-            <div id="jump-max">The maximum reachable address of a Jump instruction is 0x0FFF FFFC</div>
-            <div id='jump-min'>The minimum reachable address of a Jump instruction is 0x0000 0000</div>
+          <div class="field is-grouped">
+            <div class="control">
+              <input class="input" minlength="10" maxlength="10" type="text" id="jump-input" placeholder="Instruction Address (0x12345678)">
+            </div>
+            <div class="control">
+              <a class="button is-info" onclick="jumpRange(document.getElementById('jump-input').value)">
+                Convert
+              </a>
+            </div>
+          </div>
+          <div id='jump-max'></div>
+          <div id='jump-min'></div>
         </div>
       </div>
     </div>
