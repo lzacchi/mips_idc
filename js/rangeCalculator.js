@@ -3,8 +3,8 @@
 
 
 function branchRange(input) {
-    maxValid = "0x1FFFC";
-    minValid = "0x20000"
+    maxValid = "1FFFC";
+    minValid = "20000"
 
     var maxRange = (parseInt(input.slice(2), 16) + 4  + parseInt(maxValid, 16)).toString(16);
 
