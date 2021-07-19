@@ -8,7 +8,13 @@ function branchRange(input) {
 
     var maxRange = (parseInt(input.slice(2), 16) + 4  + parseInt(maxValid, 16)).toString(16);
 
-    var minRange = (parseInt(input.slice(2), 16) + 4 - parseInt(minValid, 16)).toString(16);
+    var minRange = parseInt(input.slice(2), 16) + 4 - parseInt(minValid, 16);
+
+    if (minRange < 0) {
+        minRange = 0;
+    }
+
+    minRange = minRange.toString(16);
 
     document.getElementById('branch-max').innerHTML = "The maximum reachable address by this branch instruction is 0x" + maxRange.padStart(8, '0');
     document.getElementById('branch-min').innerHTML = "The minimum reachable address by this branch instruction is 0x" + minRange.padStart(8, '0');
