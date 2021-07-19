@@ -1,42 +1,130 @@
-<div class="columns">
-    <div class="column">
-      <div class="block notification is-link">
-        <div class="content">
-          <h1 class="title is-size-5">Branch Instruction Range</h1>
-          <div class="field is-grouped">
-            <div class="control">
-              <input class="input" minlength="10" maxlength="10" type="text" id="branch-input" placeholder="Instruction Address (0x12345678)">
-            </div>
-            <div class="control">
-              <a class="button is-info" onclick="branchRange(document.getElementById('branch-input').value)">
-                Convert
-              </a>
-            </div>
+<div class="columns is-mobile">
+  <div class="column">
+    <div class="block notification is-link">
+      <div class="content">
+        <h1 class="title is-size-5-mobile">Branch Instruction Range</h1>
+        <div class="field is-grouped">
+          <div class="control">
+            <input class="input" minlength="10" maxlength="10" type="text" id="branch-input"
+              placeholder="Instruction Address (0x12345678)">
           </div>
-          <div id='branch-max'></div>
-          <div id='branch-min'></div>
+          <div class="control">
+            <a class="button is-info" onclick="branchRange(document.getElementById('branch-input').value)">
+              Convert
+            </a>
+          </div>
+          <label class="checkbox">
+            <input type="checkbox" id="pc_checkbox">
+            Don't add PC + 4
+          </label>
         </div>
+        <div id='branch-max'></div>
+        <div id='branch-min'></div>
       </div>
     </div>
-
-    <div class="column">
-      <div class="block notification is-link">
-        <div class="content">
-          <h1 class="title is-size-5">Jump Instruction Range</h1>
-          <div class="field is-grouped">
-            <div class="control">
-              <input class="input" minlength="10" maxlength="10" type="text" id="jump-input" placeholder="Instruction Address (0x12345678)">
-            </div>
-            <div class="control">
-              <a class="button is-info" onclick="jumpRange(document.getElementById('jump-input').value)">
-                Convert
-              </a>
-            </div>
-          </div>
-          <div id='jump-max'></div>
-          <div id='jump-min'></div>
-        </div>
-      </div>
-    </div>
-
   </div>
+
+  <div class="column">
+    <div class="block notification is-link">
+      <div class="content">
+        <h1 class="title is-size-5-mobile">Jump Instruction Range</h1>
+        <div class="field is-grouped">
+          <div class="control">
+            <input class="input" minlength="10" maxlength="10" type="text" id="jump-input"
+              placeholder="Instruction Address (0x12345678)">
+          </div>
+          <div class="control">
+            <a class="button is-info" onclick="jumpRange(document.getElementById('jump-input').value)">
+              Convert
+            </a>
+          </div>
+        </div>
+        <div id='jump-max'></div>
+        <div id='jump-min'></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="columns is-mobile">
+  <div class="column is-flex">
+    <!-- Branch Explanation -->
+    <div class="block notification is-info">
+      <div class=content>
+        <h1 class="title is-size-5-mobile">How does a Branch Instruction work?</h1>
+        <p>Branch Instructions have a 16 bit sized Branch Address field. <br>
+          That constant is signed, so we have a range of [-2<sup>15</sup>, 2<sup>15</sup>] possible addresses <br>
+          But since MIPS instructions are always 4 bytes long, it doesn't make sense to have an address ending with
+          1.<br>
+          All binary numbers multiple of 4 end with '00', because of that, the Branch Address Field is shifted 2 bits to
+          the left<br>
+          which gives us an 18 bits constant to work with.
+        </p>
+        <p>
+          Branch Instructions are relative to the PC <br>
+          That means we need to factor in the current position of PC to calculate the target address<br>
+          The PC is incremented early in the MIPS instruction cycle, that means the current PC usually means PC+4 (The
+          next instruction after a branch)
+        </p>
+        <p>
+          So the branch ranges are calculated as following:
+        </p>
+        <div class="columns is-mobile">
+          <div class="column">
+            <p>
+              PC + 4 - 2<sup>15</sup><br>
+              PC + 4 - 131068 <br>
+              PC + 4 - 0x2 0000
+            </p>
+          </div>
+
+          <div class="column">
+            <p>
+              PC + 4 + 2<sup>15</sup> -1<br>
+              PC + 131072<br>
+              PC + 4 + 0x1 FFFC
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="column is-flex">
+    <!-- Jump Explanation -->
+    <div class="block notification is-info">
+      <div class=content>
+        <h1 class="title is-size-5-mobile">How does a Branch Instruction work?</h1>
+        <p>Jump Instructions have a 26 bit sized Jump Address field. <br>
+          But since MIPS instructions are always 4 bytes long, it doesn't make sense to have an address ending with
+          1.<br>
+          All binary numbers multiple of 4 end with '00', because of that, the Jump Address Field is shifted 2 bits to
+          the left<br>
+          which gives us a 28 bits constant to work with. <br>
+          The remaining 4 most significant bits (to complete the 32 bits long MIPS instruction) are the 4 first bits of
+          PC
+        </p>
+        <p>
+          So the Jump ranges are calculated as following:
+        </p>
+        <div class="columns is-multiline is-mobile">
+          <div class="column is-full">
+            <p>
+              PC &nbsp;= XXXX XXXX XXXX XXXX XXXX XXXX XXXX XX00<br>
+              Min = XXXX 0000 0000 0000 0000 0000 0000 0000<br>
+              Max = XXXX 1111 1111 1111 1111 1111 1111 1100
+            </p>
+          </div>
+
+          <div class="column is-full">
+            PC &nbsp;= 0x XXXX XXXX<br>
+            Min = 0x X000 0000<br>
+            Max = 0x XFFF FFFC<br>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
